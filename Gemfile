@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Specify your gem's dependencies in foodie.gemspec
-gemspec
+
 gem 'httparty', '~> 0.17.0'
 gem 'nokogiri', '~> 1.10', '>= 1.10.3'
 gem 'colorize', '~> 0.8.1'
