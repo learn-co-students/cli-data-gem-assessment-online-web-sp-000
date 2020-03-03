@@ -1,14 +1,18 @@
 README
 
-DESCRIPTION
+DESCRIPTION:
+
     This CLI Project assists potential college students in choosing a college that fits their ACT score, financial profile, preferences for public/private, etc. This project will display a list of colleges that fit the user's preferences/profile.
 
-INSTALL INSTRUCTIONS
+INSTALL INSTRUCTIONS:
 
-CONTRIBUTORS GUIDE
+
+CONTRIBUTORS GUIDE:
+
     Mark Guza - Software Programmer
 
-LICENSE FOR CODE  
+LICENSE FOR CODE:
+
 
     Copyright 2020 Mark Guza
 
