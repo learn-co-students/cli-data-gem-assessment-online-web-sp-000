@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+#require_relative '../config/environment'
+require_relative '../lib/scraper.rb'
+require_relative '../lib/user.rb'
+
+puts "Hello, Welcome to the College Matcher!"
+puts "We will be using the Cappex Website"
+puts "https://www.cappex.com/colleges-by-act/colleges-for-a-33-act"
+
+user_array = []
+
+puts "What is your ACT score? [Enter a Number between 0-36]"
+    act_score = gets.chomp
+    user_array << act_score
+
+puts "What is the amount you are willing to pay per year? [Enter a Number between 0 & 100000]"
+    target_price = gets.chomp
+    user_array << target_price
+
+puts "Would you like a public or private school? [Enter 1 for PUBLIC or 2 for PRIVATE]"
+    preference_pub_priv = gets.chomp
+    user_array << preference_pub_priv
+
+User.new(user_array)
