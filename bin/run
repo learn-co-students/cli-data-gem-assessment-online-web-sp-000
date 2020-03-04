@@ -22,4 +22,7 @@ puts "Would you like a public or private school? [Enter 1 for PUBLIC or 2 for PR
     preference_pub_priv = gets.chomp
     user_array << preference_pub_priv
 
+
+
+#user_array = [act score, target price, public or private]
 User.new(user_array)

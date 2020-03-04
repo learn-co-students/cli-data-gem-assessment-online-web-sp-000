@@ -4,22 +4,34 @@ require 'nokogiri'
 
 class Scraper
 
-  def self.scrape_colleges()
+  def self.scrape_colleges
     index_url = https://www.cappex.com/colleges-by-act/colleges-for-a-33-act
-    scraped_colleges = []
+    scraped_colleges = {}
     scraped_array = Nokogiri::HTML(open(index_url))
 
       scraped_array.css("div.college-list--cards").each do |college|
+          name = college.css("div.college-list--card-title-container a").value
 
-          scraped_college = {
-                    :average_act => college.css(".student-name").text,
-                    :tuition_cost => college.css("a").attribute("href").value,
-                    :public_or_private => college.css(".student-location").text,
-                    :profile_url => college.css("a").attribute("href").value
-                          }
+          college.css("div.college-list--card-outer").each do |inner_data|
+                      value = inner_data.css("div").attribute("content").value
+                      inner_array << value
+          end
 
-          scraped_colleges << scraped_college
+          scraped_colleges = { :name =>
+                  {
+                    :average_act => inner_array[0]
+                    :average_sat => inner_array[1]
+                    :acceptance_rate => inner_array[2]
+                    :public_or_private => inner_array[3]
+                    :level_of_institution => inner_array[4]
+                    :campus_setting => inner_array[5]
+                    :tuition_cost => inner_array[6]
+                    :number_of_students => inner_array[7]
+                  }
+          }
+
       end
+
       return scraped_colleges
   end
 
