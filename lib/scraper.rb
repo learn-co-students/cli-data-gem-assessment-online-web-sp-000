@@ -17,7 +17,7 @@ class Scraper
                       inner_array << value
           end
 
-          scraped_colleges = { :name =>
+          scraped_colleges[:name] =
                   {
                     :average_act => inner_array[0]
                     :average_sat => inner_array[1]
@@ -28,7 +28,6 @@ class Scraper
                     :tuition_cost => inner_array[6]
                     :number_of_students => inner_array[7]
                   }
-          }
 
       end
 
