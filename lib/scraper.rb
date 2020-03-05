@@ -4,30 +4,40 @@ require 'nokogiri'
 
 class Scraper
 
+  def initialize
+  end
+
   def self.scrape_colleges
-    index_url = https://www.cappex.com/colleges-by-act/colleges-for-a-33-act
+    index_url = "https://www.cappex.com/colleges-by-act/colleges-for-a-33-act"
     scraped_colleges = {}
+    inner_array = []
     scraped_array = Nokogiri::HTML(open(index_url))
 
-      scraped_array.css("div.college-list--cards").each do |college|
-          name = college.css("div.college-list--card-title-container a").value
 
-          college.css("div.college-list--card-outer").each do |inner_data|
-                      value = inner_data.css("div").attribute("content").value
-                      inner_array << value
+#hrefs = doc.css(".student-card a").map { |anchor| anchor["href"] }
+
+      scraped_array.css(".college-list--cards article").each do |college|
+          name = college.css(".college-list--card-title-container a").text
+
+          college.css(".college-list--card-outer div.content").each do |inner_data|
+                      inner_array = []
+                      val = inner_data.css("div").attribute("content").value
+                      inner_array << val
           end
 
           scraped_colleges[:name] =
                   {
-                    :average_act => inner_array[0]
-                    :average_sat => inner_array[1]
-                    :acceptance_rate => inner_array[2]
-                    :public_or_private => inner_array[3]
-                    :level_of_institution => inner_array[4]
-                    :campus_setting => inner_array[5]
-                    :tuition_cost => inner_array[6]
+                    :average_act => inner_array[0],
+                    :average_sat => inner_array[1],
+                    :acceptance_rate => inner_array[2],
+                    :public_or_private => inner_array[3],
+                    :level_of_institution => inner_array[4],
+                    :campus_setting => inner_array[5],
+                    :tuition_cost => inner_array[6],
                     :number_of_students => inner_array[7]
                   }
+
+                puts scraped_colleges
 
       end
 
@@ -35,6 +45,14 @@ class Scraper
   end
 
 end
+
+apple = Scraper.scrape_colleges
+#apple.scrape_colleges
+
+
+
+
+
 =begin
   def self.scrape_profile_page(profile_url)
     scraped_profile_array = Nokogiri::HTML(open(profile_url))
