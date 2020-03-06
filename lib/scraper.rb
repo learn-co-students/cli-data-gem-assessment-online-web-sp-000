@@ -15,14 +15,31 @@ class Scraper
     inner_array = []
     scraped_array = Nokogiri::HTML(open(index_url))
 
+    #scrape college names
     name_arr = []
     scraped_array.css('.college-list--cards').collect do |x|
-        #y = x.css(".college-list--card-title-container").css("a").text
         y = x.css(".college-list--card-title-conatiner a").text
         name_arr << y
-        #puts name_arr
     end
-end
+
+    #scrape college ACTs
+    act_arr = []
+    scraped_array.css('.college-list--card-data-val').collect do |x|
+        y = x.css("div.average-gpa").text
+        act_arr << y
+        act_arr -= [nil, '']
+    end
+
+    #scrape college SATs
+    sat_arr = []
+    scraped_array.css('.college-list--card-data-val').collect do |x|
+        y = x.css("div.acceptance-rate").text
+        sat_arr << y
+        sat_arr -= [nil, '']
+    end
+
+
+  end
 
 end
 
