@@ -38,7 +38,23 @@ class Scraper
         sat_arr -= [nil, '']
     end
 
+    #scrape college ARs
+    y = scraped_array.css('.college-list--card-inner').css("div.college-list--card-data-val").text
+    data_array = y.squeeze("\n").split("\n")
 
+
+
+
+    #ar_arr = []
+    #scraped_array.css('.college-list--card-inner').collect do |x|
+    #    y = x.css("div.college-list--card-data-val").text
+        #ar_arr << y
+        #ar_arr = ar_arr.select! { |element| element&.size.to_i > 0 }
+    #    return y
+    #end
+    #puts y
+
+    #puts ar_arr
   end
 
 end
