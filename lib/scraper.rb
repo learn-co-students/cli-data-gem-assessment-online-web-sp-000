@@ -5,22 +5,27 @@ require 'nokogiri'
 class Scraper
 
   def initialize
+    self
   end
 
   def self.scrape_colleges
+
     index_url = "https://www.cappex.com/colleges-by-act/colleges-for-a-33-act"
     scraped_colleges = {}
     inner_array = []
     scraped_array = Nokogiri::HTML(open(index_url))
 
     name_arr = []
-    scraped_array.css('.college-list--card-title-container').collect do |x|
-        y = x.css('a').text
+    scraped_array.css('.college-list--cards').collect do |x|
+        #y = x.css(".college-list--card-title-container").css("a").text
+        y = x.css(".college-list--card-title-conatiner a").text
         name_arr << y
-        puts name_arr
+        #puts name_arr
     end
 end
+
 end
+
 Scraper.scrape_colleges
 
 =begin
