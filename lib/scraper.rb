@@ -13,7 +13,17 @@ class Scraper
     inner_array = []
     scraped_array = Nokogiri::HTML(open(index_url))
 
+    name_arr = []
+    scraped_array.css('.college-list--card-title-container').collect do |x|
+        y = x.css('a').text
+        name_arr << y
+        puts name_arr
+    end
+end
+end
+Scraper.scrape_colleges
 
+=begin
 #hrefs = doc.css(".student-card a").map { |anchor| anchor["href"] }
 
       scraped_array.css(".college-list--cards article").each do |college|
@@ -49,7 +59,7 @@ end
 apple = Scraper.scrape_colleges
 #apple.scrape_colleges
 
-
+=end
 
 
 
