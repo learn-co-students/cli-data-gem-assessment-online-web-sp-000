@@ -58,7 +58,7 @@ class Scraper
     #puts fin_hash.length
     #return fin_hash
     #Hash[data_array.map {|x| }]
-    return scraped_colleges
+    return fin_hash
   end
 end
 
