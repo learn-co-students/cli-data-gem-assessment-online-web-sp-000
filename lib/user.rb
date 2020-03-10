@@ -58,12 +58,6 @@ class User
       k = k + 1
     end
 
-    #puts fin_hash
-    #puts fin_hash[:university_of_california_los_angeles][:campus_setting]
-    #puts fin_hash.length
-    #return fin_hash
-    #Hash[data_array.map {|x| }]
-    #college_data = scraped_array
     ret_array = [name_arr, scraped_colleges, fin_hash]
     return ret_array
   end
@@ -87,9 +81,29 @@ class User
 
       if potential_schools.length == 0
         puts "Please get your ACT Score up!"
-      end
+      else
+        puts potential_schools
+    end
 
-      puts potential_schools
+    def self.price_match(max_price)
+      data = self.scrape_colleges
+      name_arr = data[0]
+      college_data = data[1]
+      fin_hash = data[2]
+      potential_schools = []
+
+      j=0
+      while j<50
+        if score >= college_data[j][:average_act].to_i
+            potential_schools << name_arr[j]
+        end
+        j = j +1
+      end
+    end
+
+    def self.pref_pub_priv(pref)
+      #1=public, 2=private
+
     end
 end
 

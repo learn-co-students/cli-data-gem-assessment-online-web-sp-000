@@ -8,11 +8,27 @@ puts "Hello, Welcome to the College Matcher!"
 puts "We will be using the Cappex Website"
 puts "https://www.cappex.com/colleges-by-act/colleges-for-a-33-act"
 
-#user_array = []
+user_arr = []
 
 puts "What is your ACT score? [Enter a Number between 0-36]"
     score = gets.chomp
-    User.act_score(score)
+    puts "Your list of schools narrowed down is..."
+    narrowed1 = User.act_score(score)
+    puts narrowed1
+
+puts "What is the maximum amount you are willing to pay per year? [Enter a Number between 0 & 100000]"
+    target_price = gets.chomp
+    puts "Your list of schools narrowed down is..."
+    narrowed2 = User.price_match(target_price, narrowed1)
+    puts narrowed2
+
+puts "Do you prefer a public or private college? [Enter 1 for PUBLIC or 2 for PRIVATE]"
+    priv_or_pub = gets.chomp
+    puts "Your list of schools narrowed down is..."
+    narrowed3 = User.pref_pub_priv(priv_or_pub,narrowed2)
+    puts narrowed3
+
+#User.preferences(user_array)
 
 =begin
 puts "What is the amount you are willing to pay per year? [Enter a Number between 0 & 100000]"
@@ -27,6 +43,4 @@ puts "Would you like a public or private school? [Enter 1 for PUBLIC or 2 for PR
 
 #user_array = [act score, target price, public or private]
 User.new(user_array)
-
-
 =end
