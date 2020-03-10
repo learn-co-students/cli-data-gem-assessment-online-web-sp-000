@@ -63,18 +63,25 @@ class User
     #puts fin_hash.length
     #return fin_hash
     #Hash[data_array.map {|x| }]
-    ret_array = [name_arr, fin_hash]
+    #college_data = scraped_array
+    ret_array = [name_arr, scraped_colleges, fin_hash]
+    return ret_array
   end
 
   def self.act_score(score)
     data = self.scrape_colleges
     name_arr = data[0]
     college_data = data[1]
+    fin_hash = data[2]
     potential_schools = []
     #puts data[:harvard_college][:average_act]
 
 
-    data.each do |x|
+  i=0
+  while (i < college_data.length) do
+          puts college_data[i][:average_act]
+      break
+    end
       x.values.each do |y|
         puts y
         break
