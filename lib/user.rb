@@ -68,6 +68,7 @@ class User
     return ret_array
   end
 
+
   def self.act_score(score)
       data = self.scrape_colleges
       name_arr = data[0]
@@ -76,24 +77,20 @@ class User
       potential_schools = []
       #puts data[:harvard_college][:average_act]
 
-      i=0
-      while (i < college_data.length)
-              puts college_data[i][:average_act]
-              i++
+      j=0
+      while j<50
+        if score >= college_data[j][:average_act].to_i
+            potential_schools << name_arr[j]
+        end
+        j = j +1
       end
 
-
-
-      if score.to_i >= x[average_act]
-        potential_schools << x.first
-        #data.select{|k, hash| hash[:act_score] >= "28" }
-        #data.select{|key, hash| hash["client_id"] == "2180" }
-        #potential_schools << x.partny:average_act]
+      if potential_schools.length == 0
+        puts "Please get your ACT Score up!"
       end
 
-  end
-
-
+      puts potential_schools
+    end
 end
 
-#User.act_score("28")
+User.act_score(20)

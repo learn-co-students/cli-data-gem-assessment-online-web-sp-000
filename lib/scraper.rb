@@ -53,13 +53,10 @@ class Scraper
       k = k + 1
     end
 
-    #puts fin_hash
-    #puts fin_hash[:university_of_california_los_angeles][:campus_setting]
-    #puts fin_hash.length
-    #return fin_hash
-    #Hash[data_array.map {|x| }]
-    return fin_hash
+    ret_array = [name_arr, scraped_colleges, fin_hash]
+    return ret_array
   end
+
 end
 
 Scraper.scrape_colleges
