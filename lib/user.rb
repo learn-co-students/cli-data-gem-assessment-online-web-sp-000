@@ -69,38 +69,31 @@ class User
   end
 
   def self.act_score(score)
-    data = self.scrape_colleges
-    name_arr = data[0]
-    college_data = data[1]
-    fin_hash = data[2]
-    potential_schools = []
-    #puts data[:harvard_college][:average_act]
+      data = self.scrape_colleges
+      name_arr = data[0]
+      college_data = data[1]
+      fin_hash = data[2]
+      potential_schools = []
+      #puts data[:harvard_college][:average_act]
 
-
-  i=0
-  while (i < college_data.length) do
-          puts college_data[i][:average_act]
-      break
-    end
-      x.values.each do |y|
-        puts y
-        break
+      i=0
+      while (i < college_data.length)
+              puts college_data[i][:average_act]
+              i++
       end
-      puts x.first
-      puts x.fetch("average_act")
-      puts x.first
-      #puts x[:average_act]
 
-      break
+
+
       if score.to_i >= x[average_act]
         potential_schools << x.first
         #data.select{|k, hash| hash[:act_score] >= "28" }
         #data.select{|key, hash| hash["client_id"] == "2180" }
         #potential_schools << x.partny:average_act]
       end
-    end
-    puts potential_schools
+
   end
+
+
 end
 
-User.act_score(28)
+#User.act_score("28")
