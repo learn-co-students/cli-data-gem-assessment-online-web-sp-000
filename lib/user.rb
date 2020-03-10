@@ -85,13 +85,20 @@ class User
         puts potential_schools
     end
 
-    def self.price_match(max_price)
+    def self.price_match(max_price, narrowed_list)
       data = self.scrape_colleges
       name_arr = data[0]
       college_data = data[1]
       fin_hash = data[2]
       potential_schools = []
+      price_arr = []
 
+      narrowed_list.each do |college|
+          price_arr << college_data[college][:tuition_cost].slice!(0).tap { |s| s.delete!(',') }.to_i
+          puts price_arr
+      end
+
+=begin
       j=0
       while j<50
         if score >= college_data[j][:average_act].to_i
@@ -99,12 +106,14 @@ class User
         end
         j = j +1
       end
+=end
     end
 
-    def self.pref_pub_priv(pref)
+    #def self.pref_pub_priv(pref, narrowed_list)
       #1=public, 2=private
 
-    end
+    #end
 end
 
-User.act_score(20)
+narrowed_list = User.act_score(28)
+User.price_match("$28,000", narrowed_list)
