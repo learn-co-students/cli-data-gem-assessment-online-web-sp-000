@@ -82,7 +82,10 @@ class User
       if potential_schools.length == 0
         puts "Please get your ACT Score up!"
       else
-        puts potential_schools
+        #puts potential_schools
+        return potential_schools
+      end
+
     end
 
     def self.price_match(max_price, narrowed_list)
@@ -93,11 +96,16 @@ class User
       potential_schools = []
       price_arr = []
 
-      narrowed_list.each do |college|
-          price_arr << college_data[college][:tuition_cost].slice!(0).tap { |s| s.delete!(',') }.to_i
-          puts price_arr
-      end
+      #puts narrowed_list
 
+      narrowed_list.each do |college|
+          if max_price.delete("$").delete(',') >= fin_hash[college][:tuition_cost].delete("$").delete(',')
+              potential_schools << college
+          end
+          #price_arr << college_data["#{college}"][:tuition_cost].slice!(0).tap { |s| s.delete!(',') }.to_i
+          return potential_schools
+      end
+    end
 =begin
       j=0
       while j<50
@@ -107,13 +115,13 @@ class User
         j = j +1
       end
 =end
-    end
+
 
     #def self.pref_pub_priv(pref, narrowed_list)
       #1=public, 2=private
-
     #end
+
 end
 
 narrowed_list = User.act_score(28)
-User.price_match("$28,000", narrowed_list)
+User.price_match("28,000", narrowed_list)
