@@ -96,32 +96,21 @@ class User
       potential_schools = []
       price_arr = []
 
-      #puts narrowed_list
+      #puts narrowed_list.length
 
       narrowed_list.each do |college|
           if max_price.delete("$").delete(',') >= fin_hash[college][:tuition_cost].delete("$").delete(',')
               potential_schools << college
           end
-          #price_arr << college_data["#{college}"][:tuition_cost].slice!(0).tap { |s| s.delete!(',') }.to_i
-          return potential_schools
       end
+      if potential_schools.length == 0
+        puts "Please look into financial aid before applying."
+      end
+      return potential_schools.length
     end
-=begin
-      j=0
-      while j<50
-        if score >= college_data[j][:average_act].to_i
-            potential_schools << name_arr[j]
-        end
-        j = j +1
-      end
-=end
 
-
-    #def self.pref_pub_priv(pref, narrowed_list)
-      #1=public, 2=private
-    #end
 
 end
 
 narrowed_list = User.act_score(28)
-User.price_match("28,000", narrowed_list)
+User.price_match("18,000", narrowed_list)
