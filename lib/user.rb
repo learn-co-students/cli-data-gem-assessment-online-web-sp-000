@@ -142,12 +142,12 @@ class User
       potential_schools = []
 
       narrowed_list.each do |college|
-          if num_pref.to_i <= fin_hash[college][:number_of_students].delete(',')
+          if num_pref.to_i >= fin_hash[college][:number_of_students].delete(',').to_i
               potential_schools << college
           end
       end
       if potential_schools.length == 0
-        puts "Please enter a lower numerical preference."
+        puts "Please enter a larger numerical preference for student population."
       end
       puts potential_schools
       return potential_schools
@@ -160,5 +160,5 @@ end
 narrowed_list = User.act_score(28)
 narrowed_list = User.price_match("18,000", narrowed_list)
 narrowed_list = User.pref_pub_priv(1,narrowed_list)
-User.num_of_students(35,000, narrowed_list)
+User.num_of_students(55000, narrowed_list)
 #=end
