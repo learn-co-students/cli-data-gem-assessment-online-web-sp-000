@@ -28,6 +28,13 @@ puts "Do you prefer a public or private college? [Enter 1 for PUBLIC or 2 for PR
     narrowed3 = User.pref_pub_priv(priv_or_pub,narrowed2)
     puts narrowed3
 
+puts "What is the maximum amount of students you prefer? [Enter a Number between 0 & 70000]"
+    num_pref = gets.chomp
+    puts "Your list of schools narrowed down is..."
+    narrowed4 = User.num_of_students(num_pref,narrowed3)
+    puts narrowed4
+
+
 #User.preferences(user_array)
 
 =begin
