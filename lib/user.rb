@@ -69,11 +69,10 @@ class User
       college_data = data[1]
       fin_hash = data[2]
       potential_schools = []
-      #puts data[:harvard_college][:average_act]
 
       j=0
       while j<50
-        if score >= college_data[j][:average_act].to_i
+        if score.to_i >= college_data[j][:average_act].to_i
             potential_schools << name_arr[j]
         end
         j = j +1
@@ -116,9 +115,9 @@ class User
       fin_hash = data[2]
       potential_schools = []
 
-      if priv_or_pub == 1
+      if priv_or_pub == "1"
           pref = "Public"
-      elsif priv_or_pub == 2
+      elsif priv_or_pub == "2"
           pref = "Private"
       end
 
@@ -156,9 +155,9 @@ class User
 end
 
 #Testing Cases Below...
-#=begin
+=begin
 narrowed_list = User.act_score(28)
 narrowed_list = User.price_match("18,000", narrowed_list)
 narrowed_list = User.pref_pub_priv(1,narrowed_list)
 User.num_of_students(55000, narrowed_list)
-#=end
+=end
