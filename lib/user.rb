@@ -90,13 +90,12 @@ class User
 
     def self.price_match(max_price, narrowed_list)
       data = self.scrape_colleges
+      #puts data
       name_arr = data[0]
       college_data = data[1]
       fin_hash = data[2]
       potential_schools = []
       price_arr = []
-
-      #puts narrowed_list.length
 
       narrowed_list.each do |college|
           if max_price.delete("$").delete(',') >= fin_hash[college][:tuition_cost].delete("$").delete(',')
@@ -106,11 +105,60 @@ class User
       if potential_schools.length == 0
         puts "Please look into financial aid before applying."
       end
-      return potential_schools.length
+      puts potential_schools
+      return potential_schools
     end
 
+    def self.pref_pub_priv(priv_or_pub,narrowed_list)
+      data = self.scrape_colleges
+      name_arr = data[0]
+      college_data = data[1]
+      fin_hash = data[2]
+      potential_schools = []
+
+      if priv_or_pub == 1
+          pref = "Public"
+      elsif priv_or_pub == 2
+          pref = "Private"
+      end
+
+      narrowed_list.each do |college|
+          if pref == fin_hash[college][:public_or_private]
+              potential_schools << college
+          end
+      end
+      if potential_schools.length == 0
+        puts "Please enter another preference [Enter 1 for PUBLIC or 2 for PRIVATE]."
+      end
+      puts potential_schools
+      return potential_schools
+    end
+
+    def self.num_of_students(num_pref,narrowed_list)
+      data = self.scrape_colleges
+      name_arr = data[0]
+      college_data = data[1]
+      fin_hash = data[2]
+      potential_schools = []
+
+      narrowed_list.each do |college|
+          if num_pref.to_i <= fin_hash[college][:number_of_students].delete(',')
+              potential_schools << college
+          end
+      end
+      if potential_schools.length == 0
+        puts "Please enter a lower numerical preference."
+      end
+      puts potential_schools
+      return potential_schools
+    end
 
 end
 
+#Testing Cases Below...
+#=begin
 narrowed_list = User.act_score(28)
-User.price_match("18,000", narrowed_list)
+narrowed_list = User.price_match("18,000", narrowed_list)
+narrowed_list = User.pref_pub_priv(1,narrowed_list)
+User.num_of_students(35,000, narrowed_list)
+#=end
