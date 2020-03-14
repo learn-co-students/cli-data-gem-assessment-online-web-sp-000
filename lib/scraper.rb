@@ -14,10 +14,7 @@ class Scraper
     #scrape college names
     name_arr = []
     scraped_array.css('.college-list--card-title-conatiner a').each do |x|
-        #x.text.to_sym => :x
-        #symbol = :"#{x}"
         name_proper = x.text.gsub(/\s+/,"_").gsub('-',"_").downcase.to_sym
-        #name_proper = x.text.parameterize.underscore.to_sym
         name_arr << name_proper
     end
 
@@ -41,7 +38,6 @@ class Scraper
           :tuition_cost => data_array[i+6],
           :number_of_students => data_array[i+7]
         }
-        #puts scraped_college
         i = i + 8
         scraped_colleges << scraped_college
     end
