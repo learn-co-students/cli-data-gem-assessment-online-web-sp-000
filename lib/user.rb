@@ -9,6 +9,7 @@ class User
     self
   end
 
+=begin
   def self.scrape_colleges
 
     index_url = "https://www.cappex.com/colleges-by-act/colleges-for-a-33-act"
@@ -61,10 +62,11 @@ class User
     ret_array = [name_arr, scraped_colleges, fin_hash]
     return ret_array
   end
+=end
 
 
   def self.act_score(score)
-      data = self.scrape_colleges
+      data = Scraper.scrape_colleges
       name_arr = data[0]
       college_data = data[1]
       fin_hash = data[2]
@@ -88,7 +90,7 @@ class User
     end
 
     def self.price_match(max_price, narrowed_list)
-      data = self.scrape_colleges
+      data = Scraper.scrape_colleges
       #puts data
       name_arr = data[0]
       college_data = data[1]
@@ -109,7 +111,7 @@ class User
     end
 
     def self.pref_pub_priv(priv_or_pub,narrowed_list)
-      data = self.scrape_colleges
+      data = Scraper.scrape_colleges
       name_arr = data[0]
       college_data = data[1]
       fin_hash = data[2]
@@ -127,14 +129,14 @@ class User
           end
       end
       if potential_schools.length == 0
-        puts "Please enter another preference [Enter 1 for PUBLIC or 2 for PRIVATE]."
+        puts "Your requirements are too strict. Please reevaluate your preferences."
       end
       puts potential_schools
       return potential_schools
     end
 
     def self.num_of_students(num_pref,narrowed_list)
-      data = self.scrape_colleges
+      data = Scraper.scrape_colleges
       name_arr = data[0]
       college_data = data[1]
       fin_hash = data[2]
