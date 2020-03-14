@@ -129,7 +129,7 @@ class User
           end
       end
       if potential_schools.length == 0
-        puts "Your requirements are too strict. Please reevaluate your preferences."
+        puts "Your requirements are too strict. Please reevaluate your preferences and restart."
       end
       puts potential_schools
       return potential_schools
@@ -148,7 +148,7 @@ class User
           end
       end
       if potential_schools.length == 0
-        puts "Please enter a larger numerical preference for student population."
+        puts "Your requirements are too strict. Please reevaluate your preferences and restart."
       end
       puts potential_schools
       return potential_schools

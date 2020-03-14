@@ -26,19 +26,16 @@ puts "Do you prefer a public or private college? [Enter 1 for PUBLIC or 2 for PR
     priv_or_pub = gets.chomp
     puts "Your list of schools narrowed down is..."
     narrowed3 = User.pref_pub_priv(priv_or_pub,narrowed2)
-    if narrowed3 == "Please enter another preference [Enter 1 for PUBLIC or 2 for PRIVATE]."
-        puts "Your requirements are too strict. Please reevaluate your preferences."
+    if narrowed3 == "Your requirements are too strict. Please reevaluate your preferences and restart."
+        exit
     end
-    puts narrowed3
 
 puts "What is the maximum amount of students you prefer? [Enter a Number between 0 & 70000]"
     num_pref = gets.chomp
     puts "Your list of schools narrowed down is..."
     narrowed4 = User.num_of_students(num_pref,narrowed3)
-    if narrowed4 == "Please enter a larger numerical preference for student population."
-        num_pref2 = gets.chomp
-        narrowed5 = User.num_of_students(num_pref2,narrowed3)
+    if narrowed4 == "Your requirements are too strict. Please reevaluate your preferences and restart."
+        exit
     end
-    puts narrowed4
 
 puts "Good luck with your applications!"
