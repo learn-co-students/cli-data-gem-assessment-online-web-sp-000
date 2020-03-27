@@ -4,12 +4,6 @@ require 'nokogiri'
 
 class User
 
-=begin
-  def initialize
-    self
-  end
-=end
-
   def self.act_score(score)
       data = Scraper.scrape_colleges
       name_arr = data[0]
@@ -51,7 +45,7 @@ class User
       if potential_schools.length == 0
         puts "Please look into financial aid before applying."
       end
-      puts potential_schools
+      #puts potential_schools
       return potential_schools
     end
 
@@ -76,7 +70,7 @@ class User
       if potential_schools.length == 0
         puts "Your requirements are too strict. Please reevaluate your preferences and restart."
       end
-      puts potential_schools
+      #puts potential_schools
       return potential_schools
     end
 
@@ -95,7 +89,7 @@ class User
       if potential_schools.length == 0
         puts "Your requirements are too strict. Please reevaluate your preferences and restart."
       end
-      puts potential_schools
+      #puts potential_schools
       return potential_schools
     end
 
