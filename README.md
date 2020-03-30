@@ -2,6 +2,9 @@ README
 
 DESCRIPTION:
     This CLI Project assists potential college students in choosing a college that fits their ACT score, financial profile, preferences     for public/private, etc. This project will display a list of colleges that fit the user's preferences/profile.
+   
+   ![Code Flow Diagram](Updated Flow Diagram.PNG)
+    
 
 INSTALL INSTRUCTIONS:
     1) Type "git clone git@github.com:guzamaguza/cli-data-gem-assessment-online-web-sp-000.git"
