@@ -12,13 +12,20 @@ class Scraper
         name_proper = x.text.gsub(/\s+/,"_").gsub('-',"_").downcase.to_sym
         #name_arr << name_proper
         puts name_proper
-        binding.pry
+        COLLEGES::College.new()
     end
 
-    scraped_colleges.css('.college-list--card-inner').css("div.college-list--card-data-val").text
+    y = scraped_colleges.css('.college-list--card-inner').css("div.college-list--card-data-val").text
+    puts y
+    binding.pry
+  end
+
+  def self.scrape_act
 
   end
 
+  def self.scrape_
+  end
 
 end
 
