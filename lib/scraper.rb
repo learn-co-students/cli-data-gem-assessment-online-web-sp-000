@@ -5,6 +5,30 @@ require 'nokogiri'
 class Scraper
 
   def self.scrape_colleges
+    index_url = "https://www.cappex.com/colleges-by-act/colleges-for-a-33-act"
+    scraped_colleges = Nokogiri::HTML(open(index_url))
+
+    scraped_colleges.css('.college-list--card-title-conatiner a').each do |x|
+        name_proper = x.text.gsub(/\s+/,"_").gsub('-',"_").downcase.to_sym
+        #name_arr << name_proper
+        puts name_proper
+        binding.pry
+    end
+
+    scraped_colleges.css('.college-list--card-inner').css("div.college-list--card-data-val").text
+
+  end
+
+
+end
+
+Scraper.scrape_colleges
+
+
+=begin
+class Scraper
+
+  def self.scrape_colleges
 
     index_url = "https://www.cappex.com/colleges-by-act/colleges-for-a-33-act"
 
@@ -56,3 +80,5 @@ class Scraper
 end
 
 Scraper.scrape_colleges
+
+=end
