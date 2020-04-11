@@ -12,7 +12,7 @@ class Scraper
         name_proper = x.text.gsub(/\s+/,"_").gsub('-',"_").downcase.to_sym
         #name_arr << name_proper
         puts name_proper
-        COLLEGES::College.new()
+        #COLLEGES::College.new()
     end
 
     y = scraped_colleges.css('.college-list--card-inner').css("div.college-list--card-data-val").text
