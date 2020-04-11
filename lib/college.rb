@@ -17,32 +17,36 @@ class College
     save
   end
 
-  def item_container
-
+  def self.get_average_act
+    Scraper.scrape_act(@name)
   end
 
-  def get_average_act
+  def self.get_average_sat
+    Scraper.scrape_Sat(@name)
   end
 
-  def get_average_sat
+  def self.get_acceptance_rate
+    Scraper.scrape_Acceptance_Rate(@name)
   end
 
-  def get_acceptance_rate
+  def self.get_publicorprivate
+    Scraper.scrape_PubOrPriv(@name)
   end
 
-  def get_publicorprivate
+  def self.get_levelofinstitution
+    Scraper.scrape_LevelOfInstitution(@name)
   end
 
-  def get_levelofinstitution
+  def self.get_campussetting
+    Scraper.scrape_Campus_Setting(@name)
   end
 
-  def get_campussetting
+  def self.get_tuitioncost
+    Scraper.scrape_Tuition_Cost(@name)
   end
 
-  def get_tuitioncost
-  end
-
-  def get_numofstudents
+  def self.get_numofstudents
+    Scraper.scrape_NumOfStudents(@name)
   end
 
   def save
