@@ -1,7 +1,9 @@
 #!/usr/bin/env ruby
 require_relative '../config/environment'
-COLLEGES::CLI.new.call
+#COLLEGES::CLI.new.call
+CLI.new.call
 
+=begin
 ##########################################################################
 #require_relative '../config/environment'
 require_relative '../lib/scraper.rb'
@@ -42,3 +44,6 @@ puts "What is the maximum amount of students you prefer? [Enter a Number between
     end
 
 puts "Good luck with your applications!"
+
+
+=end
