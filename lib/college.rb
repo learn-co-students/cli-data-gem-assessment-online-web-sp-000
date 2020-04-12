@@ -1,3 +1,5 @@
+require 'pry'
+
 class College
   attr_accessor :name, :college_id, :average_act, :average_sat, :acceptance_rate, :public_or_private, :level_of_institution, :campus_setting, :tuition_cost, :number_of_students
   @@all = []
@@ -16,9 +18,9 @@ class College
     save
   end
 
-  def self.get_college_info
-    Scraper.scrape_college_info
-  end
+  #def self.get_college_info
+  #  Scraper.scrape_college_info
+  #end
 
   def get_average_act
     #scrape_Act(name,id)
@@ -55,6 +57,15 @@ class College
 
   def save
     @@all << self
+    puts self.name
+    puts self.average_act
+    puts self.average_sat
+    puts self.acceptance_rate
+    puts self.public_or_private
+    puts self.level_of_institution
+    puts self.campus_setting
+    puts self.tuition_cost
+    puts self.number_of_students
   end
 
 end

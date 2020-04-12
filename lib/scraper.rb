@@ -28,6 +28,7 @@ class Scraper
 
 
   #make the methods below private
+  #private
   def self.scrape_college_info
     y = scraped_colleges.css('.college-list--card-inner').css("div.college-list--card-data-val").text
     data_array = y.squeeze("\n").split("\n").select!{|val| !val.empty?}
