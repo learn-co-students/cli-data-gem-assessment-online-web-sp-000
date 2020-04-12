@@ -1,4 +1,5 @@
 require 'pry'
+require_relative '../lib/compare'
 
 class User
   attr_accessor :score, :max_payment, :priv_or_pub, :student_pop
@@ -7,25 +8,25 @@ class User
     @name = name
   end
 
-  def self.add_score_to_profile(user_score)
-    @name.score = user_score
+  def add_score_to_profile(user_score)
+    self.score = user_score
   end
 
   def add_payment_to_profile(user_max_payment)
-    @name.max_payment = user_max_payment
+    self.max_payment = user_max_payment
   end
 
   def add_preference_to_profile(user_priv_or_pub)
-    @name.priv_or_pub = user_priv_or_pub
+    self.priv_or_pub = user_priv_or_pub
   end
 
   def add_pop_to_profile(user_student_pop)
-    @name.student_pop = user_student_pop
+    self.student_pop = user_student_pop
   end
 
+end
 
-
-
+=begin
   def self.act_score(score)
       data = Scraper.scrape_colleges
       name_arr = data[0]
@@ -116,6 +117,8 @@ class User
     end
 
 end
+
+=end
 
 #Testing Cases Below...
 =begin
