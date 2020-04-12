@@ -1,6 +1,30 @@
 require 'pry'
 
 class User
+  attr_accessor :score, :max_payment, :priv_or_pub, :student_pop
+
+  def initialize(name)
+    @name = name
+  end
+
+  def self.add_score_to_profile(user_score)
+    @name.score = user_score
+  end
+
+  def add_payment_to_profile(user_max_payment)
+    @name.max_payment = user_max_payment
+  end
+
+  def add_preference_to_profile(user_priv_or_pub)
+    @name.priv_or_pub = user_priv_or_pub
+  end
+
+  def add_pop_to_profile(user_student_pop)
+    @name.student_pop = user_student_pop
+  end
+
+
+
 
   def self.act_score(score)
       data = Scraper.scrape_colleges

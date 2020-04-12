@@ -3,6 +3,7 @@ require_relative "../lib/cli"
 require_relative "../lib/college"
 require_relative "../lib/scraper"
 require_relative "../lib/user"
+require_relative "../lib/compare"
 
 require 'pry'
 require 'nokogiri'
