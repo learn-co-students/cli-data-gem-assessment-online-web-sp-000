@@ -11,7 +11,7 @@ class Scraper
     scraped_colleges.css('.college-list--card-title-conatiner a').each do |x|
         name_proper = x.text.gsub(/\s+/,"_").gsub('-',"_").downcase.to_sym
         College.new(name_proper,id)
-        id++  #for every iteration of college name we create a new college instance object
+        id = id + 1   #for every iteration of college name we create a new college instance object
     end
   end
 
@@ -23,6 +23,9 @@ class Scraper
     data_array.delete(nil)
 
   #make the methods below private
+  def scrape_college_info
+
+  end
 
   def scrape_Act(name,id)
     data_array[id]
