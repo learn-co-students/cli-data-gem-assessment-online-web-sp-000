@@ -1,3 +1,4 @@
+#require_relative '..bin/run'
 require_relative "../lib/cli"
 require_relative "../lib/college"
 require_relative "../lib/scraper"

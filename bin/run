@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 require_relative '../config/environment'
+require_relative '../lib/cli'
 #COLLEGES::CLI.new.call
-CLI.new.call
+CLI.call
 
 =begin
 ##########################################################################

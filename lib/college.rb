@@ -4,47 +4,52 @@ class College
 
   def initialize(name,id)
     @name = name
-    @id = college_id
-    @average_act = self.get_average_act
-    @average_sat = self.get_average_sat
-    @acceptance_rate = self.get_acceptance_rate
-    @public_or_private = self.get_publicorprivate
-    @level_of_institution = self.get_levelofinstitution
-    @campus_setting = self.get_campussetting
-    @tuition_cost = self.get_tuitioncost
-    @number_of_students = self.get_numofstudents
+    @id = id
+    @average_act = get_average_act
+    @average_sat = get_average_sat
+    @acceptance_rate = get_acceptance_rate
+    @public_or_private = get_publicorprivate
+    @level_of_institution = get_levelofinstitution
+    @campus_setting = get_campussetting
+    @tuition_cost = get_tuitioncost
+    @number_of_students = get_numofstudents
     save
   end
 
-  def self.get_average_act
-    Scraper.scrape_act(@name, @id)
+  def self.get_college_info
+    Scraper.scrape_college_info
   end
 
-  def self.get_average_sat
+  def get_average_act
+    #scrape_Act(name,id)
+    Scraper.scrape_Act(@name, @id)
+  end
+
+  def get_average_sat
     Scraper.scrape_Sat(@name, @id)
   end
 
-  def self.get_acceptance_rate
+  def get_acceptance_rate
     Scraper.scrape_Acceptance_Rate(@name,@id)
   end
 
-  def self.get_publicorprivate
+  def get_publicorprivate
     Scraper.scrape_PubOrPriv(@name,@id)
   end
 
-  def self.get_levelofinstitution
+  def get_levelofinstitution
     Scraper.scrape_LevelOfInstitution(@name,@id)
   end
 
-  def self.get_campussetting
+  def get_campussetting
     Scraper.scrape_Campus_Setting(@name,@id)
   end
 
-  def self.get_tuitioncost
+  def get_tuitioncost
     Scraper.scrape_Tuition_Cost(@name,@id)
   end
 
-  def self.get_numofstudents
+  def get_numofstudents
     Scraper.scrape_NumOfStudents(@name,@id)
   end
 
