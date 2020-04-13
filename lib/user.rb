@@ -1,12 +1,39 @@
 require 'pry'
 require_relative '../lib/compare'
+require_relative '../lib/cli'
 
 class User
   attr_accessor :score, :max_payment, :priv_or_pub, :student_pop
 
-  def initialize(name)
+  def initialize(name,score,max_payment,priv_or_pub,student_pop)
     @name = name
+    @score = score
+    @max_payment = max_payment
+    @priv_or_pub = priv_or_pub
+    @student_pop = student_pop
   end
+
+  def self.name
+    @name
+  end
+
+  def self.score
+    @score
+  end
+
+  def self.max_payment
+    @max_payment
+  end
+
+  def self.priv_or_pub
+    @priv_or_pub
+  end
+
+  def self.student_pop
+    @student_pop
+  end
+
+
 
   def add_score_to_profile(user_score)
     self.score = user_score
