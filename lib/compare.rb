@@ -7,22 +7,22 @@ class Compare
 
   def self.compare_act
     College.all.each do |school|
-      if User.score >= school.average_act
+      if User.score.to_i >= school.average_act.to_i
         @@final_list << school.name
       end
     end
   end
 
   def self.compare_price
-    College.each do |school|
-      if User.max_payment.to_i >= school.tuition_cost
+    College.all.each do |school|
+      if User.max_payment.to_i >= school.tuition_cost.delete("$").delete(',').to_i
         @@final_list << school.name
       end
     end
   end
 
   def self.compare_preference
-    College.each do |school|
+    College.all.each do |school|
       if User.priv_or_pub == school.public_or_private
         @@final_list << school.name
       end
@@ -30,8 +30,8 @@ class Compare
   end
 
   def self.compare_studentpop
-    College.each do |school|
-      if User.student_pop <= school.public_or_private
+    College.all.each do |school|
+      if User.student_pop.to_i <= school.number_of_students.to_i
         @@final_list << school.number_of_students
       end
     end

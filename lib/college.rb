@@ -61,15 +61,15 @@ class College
 
   def save
     @@all << self
-    #puts self.name
-    #puts self.average_act
-    #puts self.average_sat
-    #puts self.acceptance_rate
-    #puts self.public_or_private
-    #puts self.level_of_institution
-    #puts self.campus_setting
-    #puts self.tuition_cost
-    #puts self.number_of_students
+    puts self.name
+    puts self.average_act
+    puts self.average_sat
+    puts self.acceptance_rate
+    puts self.public_or_private
+    puts self.level_of_institution
+    puts self.campus_setting
+    puts self.tuition_cost
+    puts self.number_of_students
   end
 
 end
