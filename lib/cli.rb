@@ -8,6 +8,7 @@ class CLI
     puts "https://www.cappex.com/colleges-by-act/colleges-for-a-33-act"
     Scraper.scrape_colleges
     CLI.get_user_info
+    #Compare.compareAll
     Compare.compare_act
     Compare.compare_price
     Compare.compare_preference
@@ -30,7 +31,7 @@ class CLI
     puts "What is the maximum amount you are willing to pay per year? [Enter a Number between 0 & 100000]"
       max_payment = gets.chomp
 
-    puts "Do you prefer a public or private college? [Enter 1 for PUBLIC or 2 for PRIVATE]"
+    puts "Do you prefer a public or private college? [Enter #{"Public"} or #{"Private"}]"
       priv_or_pub = gets.chomp
 
     puts "What is the maximum amount of students you prefer? [Enter a Number between 0 & 70000]"

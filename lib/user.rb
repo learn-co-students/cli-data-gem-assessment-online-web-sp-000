@@ -3,7 +3,8 @@ require_relative '../lib/compare'
 require_relative '../lib/cli'
 
 class User
-  attr_accessor :score, :max_payment, :priv_or_pub, :student_pop
+  attr_accessor :name, :score, :max_payment, :priv_or_pub, :student_pop
+  @@all = []
 
   def initialize(name,score,max_payment,priv_or_pub,student_pop)
     @name = name
@@ -11,26 +12,27 @@ class User
     @max_payment = max_payment
     @priv_or_pub = priv_or_pub
     @student_pop = student_pop
+    @@all << self
   end
 
   def self.name
-    @name
+    @@all.first.name
   end
 
   def self.score
-    @score
+    @@all.first.score
   end
 
   def self.max_payment
-    @max_payment
+    @@all.first.max_payment
   end
 
   def self.priv_or_pub
-    @priv_or_pub
+    @@all.first.priv_or_pub
   end
 
   def self.student_pop
-    @student_pop
+    @@all.first.student_pop
   end
 
 
