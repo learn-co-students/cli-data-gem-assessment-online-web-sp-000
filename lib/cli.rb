@@ -8,11 +8,11 @@ class CLI
     puts "https://www.cappex.com/colleges-by-act/colleges-for-a-33-act"
     Scraper.scrape_colleges
     CLI.get_user_info
-    #Compare.compareAll
-    Compare.compare_act
-    Compare.compare_price
-    Compare.compare_preference
-    Compare.compare_studentpop
+    Compare.compareAll
+    #Compare.compare_act
+    #Compare.compare_price
+    #Compare.compare_preference
+    #Compare.compare_studentpop
     Compare.display_matches
 
     CLI.final_greeting
