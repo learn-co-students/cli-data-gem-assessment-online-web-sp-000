@@ -3,14 +3,20 @@ class CLI
   def self.call
     puts "Hello, Welcome to the College Matcher!"
 
+    #get user info
     CLI.get_user_info
 
+    #scrape the college data according to user's info
+    puts "GENERATING MATCHES...Please Wait!"
     Scraper.scrape_colleges
 
+    #compare user's info to colleges to match
     Compare.compareAll
 
+    #display the final matches
     Compare.display_matches
 
+    #display final greeting
     CLI.final_greeting
   end
 

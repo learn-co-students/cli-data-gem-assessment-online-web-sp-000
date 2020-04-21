@@ -1,16 +1,14 @@
-require_relative '../lib/scraper'
-
 class User
   attr_accessor :name, :score, :max_payment, :priv_or_pub, :student_pop
   @@all = []
 
-  def initialize(name,score,max_payment,priv_or_pub,student_pop)
+  def initialize(name, score, max_payment, priv_or_pub, student_pop)
     @name = name
     @score = score
     @max_payment = max_payment
     @priv_or_pub = priv_or_pub
     @student_pop = student_pop
-    @@all << self
+    save
   end
 
   def self.name
@@ -33,7 +31,13 @@ class User
     @@all.last.student_pop
   end
 
+  def self.all
+    @@all
+  end
 
+  def save
+    @@all << self
+  end
 
   def add_score_to_profile(user_score)
     self.score = user_score

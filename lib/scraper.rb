@@ -1,14 +1,27 @@
 require 'nokogiri'
 require 'open-uri'
-require_relative '../lib/user'
+require_relative 'user'
 
 class Scraper
-  index_url = "https://www.cappex.com/colleges-by-act/colleges-for-a-#{User.score}-act"
-  puts "We will be using the Cappex website: #{index_url}"
+
+=begin
+  if User.all.empty? == true
+    url_act = 36
+  elsif User.all.empty? == false
+     url_act = User.all.last.score
+  end
+
+  index_url = "https://www.cappex.com/colleges-by-act/colleges-for-a-#{url_act}-act"
   @scraped_colleges = []
   @scraped_colleges = Nokogiri::HTML(open(index_url))
+=end
+
 
   def self.scrape_colleges
+    index_url = "https://www.cappex.com/colleges-by-act/colleges-for-a-#{User.all.last.score}-act"
+    @scraped_colleges = []
+    @scraped_colleges = Nokogiri::HTML(open(index_url))
+
     id = 0
     @scraped_colleges.css('.college-list--card-title-conatiner a').each do |x|
         name_proper = x.text.gsub(/\s+/,"_").gsub('-',"_").downcase.to_sym
@@ -16,17 +29,6 @@ class Scraper
         id = id + 8   #for every iteration of college name we create a new college instance object
     end
   end
-
-  #scrape individual college data
-
-=begin
-  y = @scraped_colleges.css('.college-list--card-inner').css("div.college-list--card-data-val").text
-  @data_array = y.squeeze("\n").split("\n").select!{|val| !val.empty?}
-  @data_array.delete(" ")
-  @data_array.delete('')
-  @data_array.delete(nil)
-=end
-
 
   def self.scrape_college_info
     y = @scraped_colleges.css('.college-list--card-inner').css("div.college-list--card-data-val").text

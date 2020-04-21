@@ -52,10 +52,15 @@ class Compare
       puts "YOUR REQUIREMENTS ARE TOO STRICT AND/OR YOU NEED A HIGHER ACT SCORE!"
     else
       puts " "
-      puts "YOUR COLLEGE MATCHES ARE:"
+      puts "YOUR COLLEGE MATCHES (IN NO PARTICULAR ORDER) ARE:"
       #remove the duplicates and output list
       output = @@final_list.uniq
-      puts output
+      j = 1
+      output.each do |col|
+        puts "#{j}. #{col}"
+        j = j+1
+      end
+      #puts output
       puts "Good luck with your applications!"
     end
   end
