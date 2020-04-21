@@ -60,8 +60,34 @@ class Compare
         puts "#{j}. #{col}"
         j = j+1
       end
-      #puts output
-      puts "Good luck with your applications!"
+
+
+      dd_response = " "
+      while dd_response != "N"
+      puts "Do you want to learn more about a particular match? [Enter Y or N]"
+      dd_response = gets.chomp
+        if dd_response == 'Y'
+          puts "Enter the number of the match you want to learn more about:"
+          number_response = gets.chomp.to_i - 1
+          if number_response >= 1 || number_response <= output.length - 1
+            College.all.each do |college_name|
+              if college_name.name == output[number_response]
+                puts "  Name of School: #{college_name.name}"
+                puts "  Average Act Score: #{college_name.average_act}"
+                puts "  Average SAT Score: #{college_name.average_sat}"
+                puts "  Acceptance Rate: #{college_name.acceptance_rate}"
+                puts "  Public or Private: #{college_name.public_or_private}"
+                puts "  Institution Level: #{college_name.level_of_institution}"
+                puts "  Campus Setting: #{college_name.campus_setting}"
+                puts "  Tuition Cost: #{college_name.tuition_cost}"
+                puts "  Student Population: #{college_name.number_of_students}"
+              end
+            end
+          end
+         end
+      end
+
+      puts "Good luck with your applications #{User.name}!"
     end
   end
 
