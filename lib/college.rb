@@ -1,5 +1,3 @@
-require 'pry'
-
 class College
   attr_accessor :name, :college_id, :average_act, :average_sat, :acceptance_rate, :public_or_private, :level_of_institution, :campus_setting, :tuition_cost, :number_of_students
   @@all = []

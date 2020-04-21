@@ -1,19 +1,14 @@
-#require_relative './lib/scraper'
-
 class CLI
 
   def self.call
     puts "Hello, Welcome to the College Matcher!"
-    puts "We will be using the Cappex Website"
-    puts "https://www.cappex.com/colleges-by-act/colleges-for-a-33-act"
-    puts "PlEASE WAIT ONE SECOND: Generating college data..."
-    Scraper.scrape_colleges
+
     CLI.get_user_info
+
+    Scraper.scrape_colleges
+
     Compare.compareAll
-    #Compare.compare_act
-    #Compare.compare_price
-    #Compare.compare_preference
-    #Compare.compare_studentpop
+
     Compare.display_matches
 
     CLI.final_greeting

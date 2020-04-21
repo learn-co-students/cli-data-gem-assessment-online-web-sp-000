@@ -1,7 +1,3 @@
-require 'pry'
-require_relative '../lib/college'
-require_relative '../lib/user'
-
 class Compare
   @@final_list = []
 

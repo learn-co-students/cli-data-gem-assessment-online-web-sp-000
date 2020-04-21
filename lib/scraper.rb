@@ -1,10 +1,11 @@
-require 'open-uri'
-require 'pry'
 require 'nokogiri'
+require 'open-uri'
+require_relative '../lib/user'
 
 class Scraper
-  scraped_colleges = []
-  index_url = "https://www.cappex.com/colleges-by-act/colleges-for-a-33-act"
+  index_url = "https://www.cappex.com/colleges-by-act/colleges-for-a-#{User.score}-act"
+  puts "We will be using the Cappex website: #{index_url}"
+  @scraped_colleges = []
   @scraped_colleges = Nokogiri::HTML(open(index_url))
 
   def self.scrape_colleges
@@ -26,8 +27,6 @@ class Scraper
   @data_array.delete(nil)
 =end
 
-  #make the methods below private
-  private
 
   def self.scrape_college_info
     y = @scraped_colleges.css('.college-list--card-inner').css("div.college-list--card-data-val").text
