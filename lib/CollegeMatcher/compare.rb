@@ -63,7 +63,7 @@ class CollegeMatcher::Compare
 
 
       dd_response = " "
-      while dd_response != "N"
+      while dd_response != "N" && dd_response !="exit"
       puts "Do you want to learn more about a particular match? [Enter Y or N]"
       dd_response = gets.chomp
         if dd_response == 'Y'
