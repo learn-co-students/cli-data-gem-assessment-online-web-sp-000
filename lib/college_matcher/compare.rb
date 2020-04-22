@@ -3,7 +3,8 @@ class CollegeMatcher::Compare
 
   def self.compareAll
     CollegeMatcher::College.all.each do |school|
-      if (CollegeMatcher::User.score.to_i >= school.average_act.to_i) && (CollegeMatcher::User.max_payment.to_i >= school.tuition_cost.delete("$").delete(',').to_i) && (CollegeMatcher::User.priv_or_pub == school.public_or_private) && (CollegeMatcher::User.student_pop.to_i >= school.number_of_students.to_i)
+      #if (CollegeMatcher::User.score.to_i >= school.average_act.to_i) && (CollegeMatcher::User.max_payment.to_i >= school.tuition_cost.delete("$").delete(',').to_i) && (CollegeMatcher::User.priv_or_pub == school.public_or_private) && (CollegeMatcher::User.student_pop.to_i >= school.number_of_students.to_i)
+      if (CollegeMatcher::User.max_payment.to_i >= school.tuition_cost.delete("$").delete(',').to_i) && (CollegeMatcher::User.priv_or_pub == school.public_or_private) && (CollegeMatcher::User.student_pop.to_i >= school.number_of_students.to_i)
         @@final_list << school.name
       end
     end

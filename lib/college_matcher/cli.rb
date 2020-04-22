@@ -26,37 +26,38 @@ class CollegeMatcher::CLI
     user_name = gets.chomp
 
     #Ask the user the following questions to build out the profile
-    puts "Please answer the following 4 questions to help us match you:"
+    puts "Please answer the following 4 questions to help us match you: (enter 'exit' if you want to leave)"
 
     answer = " "
-    while answer != exit
-    puts "1) What is your ACT score? [Enter a Number between 18-36]"
-    score = gets.chomp
-      if score.instanceOf == integer && score > 17 && score < 37
+    while answer != 'exit'
+      puts "1) What is your ACT score? [Enter a Number between 18-36]"
+      score = gets.chomp.strip.downcase.to_i
+      if score > 17 && score < 36
           puts "2) What is the maximum amount you are willing to pay per year? [Enter a Number between 0 & 100000]"
-          max_payment = gets.chomp
-           if max_payment.instanceOf == integer && max_payment > 0
+          max_payment = gets.chomp.strip.downcase.to_i
+           if max_payment > 0 && max_payment < 100000
               puts "3) Do you prefer a public or private college? [Enter 1 for Public & 2 for Private]"
-              priv_or_pub = gets.chomp
-                if priv_or_pub.instanceOf == integer && priv_or_pub > 0 && priv_or_pub < 3
+              priv_or_pub = gets.chomp.strip.downcase.to_i
+                if priv_or_pub > 0 && priv_or_pub < 3
                   puts "4) What is the maximum amount of students you prefer? [Enter a Number between 0 & 70000]"
-                  student_pop = gets.chomp
-                    if student_pop.instanceOf == integer && student_pop > 0
+                  student_pop = gets.chomp.strip.downcase.to_i
+                    if student_pop > 0 && student_pop < 70000
                       new_user = CollegeMatcher::User.new(user_name,score,max_payment,priv_or_pub,student_pop)
+                      break
                     end
-                end
-              end
+                 end
             end
-          end
         end
+      end
+  end
 
 
   def self.final_greeting
     puts "Try Again? [Enter Y or N]"
-      play_again = gets.chomp
+      play_again = gets.chomp.strip
       if play_again == "Y"
         #run application again
-        system("ruby bin/run")
+        system("ruby bin/college_matcher")
       else
         exit
       end

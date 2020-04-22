@@ -1,6 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
-require_relative 'user'
+
 
 class CollegeMatcher::Scraper
 
@@ -18,7 +18,7 @@ class CollegeMatcher::Scraper
 
 
   def self.scrape_colleges
-    index_url = "https://www.cappex.com/colleges-by-act/colleges-for-a-#{User.all.last.score}-act"
+    index_url = "https://www.cappex.com/colleges-by-act/colleges-for-a-#{CollegeMatcher::User.all.last.score}-act"
     @scraped_colleges = []
     @scraped_colleges = Nokogiri::HTML(open(index_url))
 
