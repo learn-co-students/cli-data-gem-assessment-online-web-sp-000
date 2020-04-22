@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/CollegeMatcher'
+require_relative '../lib/college_matcher'
 
 CollegeMatcher::CLI.new.call
