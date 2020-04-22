@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 require_relative 'user'
 
-class Scraper
+class CollegeMatcher::Scraper
 
 =begin
   if User.all.empty? == true

@@ -9,9 +9,8 @@ require 'pry'
 require 'nokogiri'
 require 'open-uri'
 
-=begin
-module COLLEGES
+
+module CollegeMatcher
   class Error < StandardError; end
   # Your code goes here...
 end
-=end

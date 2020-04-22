@@ -1,4 +1,4 @@
-class Compare
+class CollegeMatcher::Compare
   @@final_list = []
 
   def self.compareAll

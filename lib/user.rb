@@ -1,4 +1,4 @@
-class User
+class CollegeMatcher::User
   attr_accessor :name, :score, :max_payment, :priv_or_pub, :student_pop
   @@all = []
 
