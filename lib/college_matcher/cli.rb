@@ -4,20 +4,20 @@ class CollegeMatcher::CLI
     puts "Hello, Welcome to the College Matcher!"
 
     #get user info
-    CLI.get_user_info
+    CollegeMatcher::CLI.get_user_info
 
     #scrape the college data according to user's info
     puts "GENERATING MATCHES...Please Wait!"
-    Scraper.scrape_colleges
+    CollegeMatcher::Scraper.scrape_colleges
 
     #compare user's info to colleges to match
-    Compare.compareAll
+    CollegeMatcher::Compare.compareAll
 
     #display the final matches
-    Compare.display_matches
+    CollegeMatcher::Compare.display_matches
 
     #display final greeting
-    CLI.final_greeting
+    CollegeMatcher::CLI.final_greeting
   end
 
   def self.get_user_info
@@ -42,7 +42,7 @@ class CollegeMatcher::CLI
                   puts "4) What is the maximum amount of students you prefer? [Enter a Number between 0 & 70000]"
                   student_pop = gets.chomp
                     if student_pop.instanceOf == integer && student_pop > 0
-                      new_user = User.new(user_name,score,max_payment,priv_or_pub,student_pop)
+                      new_user = CollegeMatcher::User.new(user_name,score,max_payment,priv_or_pub,student_pop)
                     end
                 end
               end

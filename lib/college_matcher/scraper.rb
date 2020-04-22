@@ -25,7 +25,7 @@ class CollegeMatcher::Scraper
     id = 0
     @scraped_colleges.css('.college-list--card-title-conatiner a').each do |x|
         name_proper = x.text.gsub(/\s+/,"_").gsub('-',"_").downcase.to_sym
-        College.new(name_proper,id)
+        CollegeMatcher::College.new(name_proper,id)
         id = id + 8   #for every iteration of college name we create a new college instance object
     end
   end
@@ -40,43 +40,43 @@ class CollegeMatcher::Scraper
   end
 
   def self.scrape_Act(name,id)
-    info = Scraper.scrape_college_info
+    info = CollegeMatcher::Scraper.scrape_college_info
     info[id]
     #@data_array[id]
   end
 
   def self.scrape_Sat(name,id)
-    info = Scraper.scrape_college_info
+    info = CollegeMatcher::Scraper.scrape_college_info
     info[id+1]
   end
 
   def self.scrape_Acceptance_Rate(name,id)
-    info = Scraper.scrape_college_info
+    info = CollegeMatcher::Scraper.scrape_college_info
     info[id+2]
   end
 
   def self.scrape_PubOrPriv(name,id)
-    info = Scraper.scrape_college_info
+    info = CollegeMatcher::Scraper.scrape_college_info
     info[id+3]
   end
 
   def self.scrape_LevelOfInstitution(name,id)
-    info = Scraper.scrape_college_info
+    info = CollegeMatcher::Scraper.scrape_college_info
     info[id+4]
   end
 
   def self.scrape_Campus_Setting(name,id)
-    info = Scraper.scrape_college_info
+    info = CollegeMatcher::Scraper.scrape_college_info
     info[id+5]
   end
 
   def self.scrape_Tuition_Cost(name,id)
-    info = Scraper.scrape_college_info
+    info = CollegeMatcher::Scraper.scrape_college_info
     info[id+6]
   end
 
   def self.scrape_NumOfStudents(name,id)
-    info = Scraper.scrape_college_info
+    info = CollegeMatcher::Scraper.scrape_college_info
     info[id+7]
   end
 end

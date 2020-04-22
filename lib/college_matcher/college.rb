@@ -22,35 +22,35 @@ class CollegeMatcher::College
 
   def get_average_act
     #scrape_Act(name,id)
-    Scraper.scrape_Act(@name, @id)
+    CollegeMatcher::Scraper.scrape_Act(@name, @id)
   end
 
   def get_average_sat
-    Scraper.scrape_Sat(@name, @id)
+    CollegeMatcher::Scraper.scrape_Sat(@name, @id)
   end
 
   def get_acceptance_rate
-    Scraper.scrape_Acceptance_Rate(@name,@id)
+    CollegeMatcher::Scraper.scrape_Acceptance_Rate(@name,@id)
   end
 
   def get_publicorprivate
-    Scraper.scrape_PubOrPriv(@name,@id)
+    CollegeMatcher::Scraper.scrape_PubOrPriv(@name,@id)
   end
 
   def get_levelofinstitution
-    Scraper.scrape_LevelOfInstitution(@name,@id)
+    CollegeMatcher::Scraper.scrape_LevelOfInstitution(@name,@id)
   end
 
   def get_campussetting
-    Scraper.scrape_Campus_Setting(@name,@id)
+    CollegeMatcher::Scraper.scrape_Campus_Setting(@name,@id)
   end
 
   def get_tuitioncost
-    Scraper.scrape_Tuition_Cost(@name,@id)
+    CollegeMatcher::Scraper.scrape_Tuition_Cost(@name,@id)
   end
 
   def get_numofstudents
-    Scraper.scrape_NumOfStudents(@name,@id)
+    CollegeMatcher::Scraper.scrape_NumOfStudents(@name,@id)
   end
 
   def self.all

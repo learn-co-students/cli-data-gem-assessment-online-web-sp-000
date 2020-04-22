@@ -2,8 +2,8 @@ class CollegeMatcher::Compare
   @@final_list = []
 
   def self.compareAll
-    College.all.each do |school|
-      if (User.score.to_i >= school.average_act.to_i) && (User.max_payment.to_i >= school.tuition_cost.delete("$").delete(',').to_i) && (User.priv_or_pub == school.public_or_private) && (User.student_pop.to_i >= school.number_of_students.to_i)
+    CollegeMatcher::College.all.each do |school|
+      if (CollegeMatcher::User.score.to_i >= school.average_act.to_i) && (CollegeMatcher::User.max_payment.to_i >= school.tuition_cost.delete("$").delete(',').to_i) && (CollegeMatcher::User.priv_or_pub == school.public_or_private) && (CollegeMatcher::User.student_pop.to_i >= school.number_of_students.to_i)
         @@final_list << school.name
       end
     end
@@ -12,8 +12,8 @@ class CollegeMatcher::Compare
   def self.compare_act
     #puts User.name.score.to_i
     #puts User.score.to_i
-    College.all.each do |school|
-      if User.score.to_i >= school.average_act.to_i
+    CollegeMatcher::College.all.each do |school|
+      if CollegeMatcher::User.score.to_i >= school.average_act.to_i
         @@final_list << school.name
       end
     end
@@ -21,8 +21,8 @@ class CollegeMatcher::Compare
 
   def self.compare_price
     #puts User.max_payment.to_i
-    College.all.each do |school|
-      if User.max_payment.to_i >= school.tuition_cost.delete("$").delete(',').to_i
+    CollegeMatcher::College.all.each do |school|
+      if CollegeMatcher::User.max_payment.to_i >= school.tuition_cost.delete("$").delete(',').to_i
         @@final_list << school.name
       end
     end
@@ -30,8 +30,8 @@ class CollegeMatcher::Compare
 
   def self.compare_preference
           #puts User.priv_or_pub
-    College.all.each do |school|
-      if User.priv_or_pub == school.public_or_private
+    CollegeMatcher::College.all.each do |school|
+      if CollegeMatcher::User.priv_or_pub == school.public_or_private
         @@final_list << school.name
       end
     end
@@ -39,9 +39,9 @@ class CollegeMatcher::Compare
 
   def self.compare_studentpop
           #puts User.student_pop.to_i
-    College.all.each do |school|
+    CollegeMatcher::College.all.each do |school|
       #puts school.number_of_students.delete(',').to_i
-      if User.student_pop.to_i >= school.number_of_students.delete(',').to_i
+      if CollegeMatcher::User.student_pop.to_i >= school.number_of_students.delete(',').to_i
         @@final_list << school.name
       end
     end
@@ -70,7 +70,7 @@ class CollegeMatcher::Compare
           puts "Enter the number of the match you want to learn more about:"
           number_response = gets.chomp.to_i - 1
           if number_response >= 1 || number_response <= output.length - 1
-            College.all.each do |college_name|
+            CollegeMatcher::College.all.each do |college_name|
               if college_name.name == output[number_response]
                 puts "  Name of School: #{college_name.name}"
                 puts "  Average Act Score: #{college_name.average_act}"
@@ -87,7 +87,7 @@ class CollegeMatcher::Compare
          end
       end
 
-      puts "Good luck with your applications #{User.name}!"
+      puts "Good luck with your applications #{CollegeMatcher::User.name}!"
     end
   end
 

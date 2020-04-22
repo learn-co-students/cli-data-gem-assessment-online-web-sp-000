@@ -4,4 +4,4 @@ require "bundler/setup"
 #require "college_matcher"
 require_relative "../lib/college_matcher"
 
-CollegeMatcher::CLI.new.call
+CollegeMatcher::CLI.call

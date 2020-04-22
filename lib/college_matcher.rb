@@ -3,6 +3,7 @@ require_relative "../lib/college_matcher/college"
 require_relative "../lib/college_matcher/compare"
 require_relative "../lib/college_matcher/scraper"
 require_relative "../lib/college_matcher/user"
+require_relative "../lib/college_matcher/version"
 
 require 'pry'
 require 'nokogiri'
