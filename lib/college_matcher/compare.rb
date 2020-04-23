@@ -71,10 +71,10 @@ class CollegeMatcher::Compare
       dd_response = gets.chomp.strip.downcase
         if dd_response == 'y'
           puts "Enter the number of the match you want to learn more about:"
-          number_response = gets.chomp.to_i - 1
-            if number_response >= 1 || number_response <= output.length
+          number_response = gets.chomp.to_i
+            if number_response >= 1 && number_response <= output.length
                 CollegeMatcher::College.all.each do |college_name|
-                  if college_name.name == output[number_response]
+                  if college_name.name == output[number_response - 1]
                     puts "  Name of School: #{college_name.name}"
                     puts "  Average Act Score: #{college_name.average_act}"
                     puts "  Average SAT Score: #{college_name.average_sat}"
@@ -87,7 +87,7 @@ class CollegeMatcher::Compare
                   end
                 end
             else
-              "Please enter a valid school number on the list!"
+              puts "Please enter a valid school number on the list!"
             end
         else
           #puts "Good luck with your applications #{CollegeMatcher::User.name}!"
