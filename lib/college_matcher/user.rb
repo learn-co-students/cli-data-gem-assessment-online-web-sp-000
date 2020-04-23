@@ -6,7 +6,13 @@ class CollegeMatcher::User
     @name = name
     @score = score
     @max_payment = max_payment
-    @priv_or_pub = priv_or_pub
+
+    if priv_or_pub == 1
+      @priv_or_pub = "Public"
+    elsif prive_or_pub == 2
+      @priv_or_pub = "Private"
+    end
+
     @student_pop = student_pop
     save
   end

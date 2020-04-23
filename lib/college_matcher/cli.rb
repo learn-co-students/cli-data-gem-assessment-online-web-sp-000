@@ -22,7 +22,6 @@ class CollegeMatcher::CLI
 
   def self.get_user_info
 
-
     #Ask the user the following questions to build out the profile
     puts "Please answer the following 5 questions to help us match you: (enter 'exit' if you want to leave)"
 
@@ -35,13 +34,13 @@ class CollegeMatcher::CLI
       score = gets.chomp.strip.downcase.to_i
       if score > 17 && score < 36
         puts "3) What is the maximum amount you are willing to pay per year? [Enter a Number between 0 & 100000]"
-        max_payment = gets.chomp.strip.downcase.to_i
+        max_payment = gets.chomp.delete("$").delete(',').strip.downcase.to_i
           if max_payment > 0 && max_payment < 100000
             puts "4) Do you prefer a public or private college? [Enter 1 for Public & 2 for Private]"
             priv_or_pub = gets.chomp.strip.downcase.to_i
               if priv_or_pub > 0 && priv_or_pub < 3
                 puts "5) What is the maximum amount of students you prefer? [Enter a Number between 0 & 70000]"
-                student_pop = gets.chomp.strip.downcase.to_i
+                student_pop = gets.chomp.strip.downcase.delete(',').to_i
                   if student_pop > 0 && student_pop < 70000
                     new_user = CollegeMatcher::User.new(user_name,score,max_payment,priv_or_pub,student_pop)
                     break

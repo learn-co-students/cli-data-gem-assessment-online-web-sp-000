@@ -6,6 +6,7 @@ class CollegeMatcher::Compare
       #if (CollegeMatcher::User.score.to_i >= school.average_act.to_i) && (CollegeMatcher::User.max_payment.to_i >= school.tuition_cost.delete("$").delete(',').to_i) && (CollegeMatcher::User.priv_or_pub == school.public_or_private) && (CollegeMatcher::User.student_pop.to_i >= school.number_of_students.to_i)
       if (CollegeMatcher::User.max_payment.to_i >= school.tuition_cost.delete("$").delete(',').to_i) && (CollegeMatcher::User.priv_or_pub == school.public_or_private) && (CollegeMatcher::User.student_pop.to_i >= school.number_of_students.to_i)
         @@final_list << school.name
+        puts @@final_list
       end
     end
   end
@@ -54,6 +55,7 @@ class CollegeMatcher::Compare
     else
       puts " "
       puts "YOUR COLLEGE MATCHES (IN NO PARTICULAR ORDER) ARE:"
+
       #remove the duplicates and output list
       output = @@final_list.uniq
       j = 1
@@ -66,30 +68,35 @@ class CollegeMatcher::Compare
       dd_response = " "
       while dd_response != "N" && dd_response !="exit"
       puts "Do you want to learn more about a particular match? [Enter Y or N]"
-      dd_response = gets.chomp
-        if dd_response == 'Y'
+      dd_response = gets.chomp.strip.downcase
+        if dd_response == 'y'
           puts "Enter the number of the match you want to learn more about:"
           number_response = gets.chomp.to_i - 1
-          if number_response >= 1 || number_response <= output.length - 1
-            CollegeMatcher::College.all.each do |college_name|
-              if college_name.name == output[number_response]
-                puts "  Name of School: #{college_name.name}"
-                puts "  Average Act Score: #{college_name.average_act}"
-                puts "  Average SAT Score: #{college_name.average_sat}"
-                puts "  Acceptance Rate: #{college_name.acceptance_rate}"
-                puts "  Public or Private: #{college_name.public_or_private}"
-                puts "  Institution Level: #{college_name.level_of_institution}"
-                puts "  Campus Setting: #{college_name.campus_setting}"
-                puts "  Tuition Cost: #{college_name.tuition_cost}"
-                puts "  Student Population: #{college_name.number_of_students}"
-              end
+            if number_response >= 1 || number_response <= output.length
+                CollegeMatcher::College.all.each do |college_name|
+                  if college_name.name == output[number_response]
+                    puts "  Name of School: #{college_name.name}"
+                    puts "  Average Act Score: #{college_name.average_act}"
+                    puts "  Average SAT Score: #{college_name.average_sat}"
+                    puts "  Acceptance Rate: #{college_name.acceptance_rate}"
+                    puts "  Public or Private: #{college_name.public_or_private}"
+                    puts "  Institution Level: #{college_name.level_of_institution}"
+                    puts "  Campus Setting: #{college_name.campus_setting}"
+                    puts "  Tuition Cost: #{college_name.tuition_cost}"
+                    puts "  Student Population: #{college_name.number_of_students}"
+                  end
+                end
+            else
+              "Please enter a valid school number on the list!"
             end
-          end
-         end
-      end
+        else
+          #puts "Good luck with your applications #{CollegeMatcher::User.name}!"
+          break
+        end
+    end
+   end
 
       puts "Good luck with your applications #{CollegeMatcher::User.name}!"
-    end
-  end
+ end
 
 end
