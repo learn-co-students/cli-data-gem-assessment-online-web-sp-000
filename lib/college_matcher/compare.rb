@@ -5,39 +5,6 @@ class CollegeMatcher::Compare
     CollegeMatcher::College.all.each do |school|
       if (CollegeMatcher::User.max_payment.to_i >= school.tuition_cost.delete("$").delete(',').to_i) && (CollegeMatcher::User.priv_or_pub == school.public_or_private) && (CollegeMatcher::User.student_pop.to_i >= school.number_of_students.to_i)
         @@final_list << school.name
-        puts @@final_list
-      end
-    end
-  end
-
-  def self.compare_act
-    CollegeMatcher::College.all.each do |school|
-      if CollegeMatcher::User.score.to_i >= school.average_act.to_i
-        @@final_list << school.name
-      end
-    end
-  end
-
-  def self.compare_price
-    CollegeMatcher::College.all.each do |school|
-      if CollegeMatcher::User.max_payment.to_i >= school.tuition_cost.delete("$").delete(',').to_i
-        @@final_list << school.name
-      end
-    end
-  end
-
-  def self.compare_preference
-    CollegeMatcher::College.all.each do |school|
-      if CollegeMatcher::User.priv_or_pub == school.public_or_private
-        @@final_list << school.name
-      end
-    end
-  end
-
-  def self.compare_studentpop
-    CollegeMatcher::College.all.each do |school|
-      if CollegeMatcher::User.student_pop.to_i >= school.number_of_students.delete(',').to_i
-        @@final_list << school.name
       end
     end
   end
