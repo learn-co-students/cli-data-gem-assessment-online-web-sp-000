@@ -13,13 +13,12 @@ class CollegeMatcher::Compare
     if @@final_list.length == 0
       puts "YOUR REQUIREMENTS ARE TOO STRICT!"
     else
-      puts " "
-      puts "YOUR COLLEGE MATCHES (Sorted Alphabetically) ARE:"
-
       #remove the duplicates and sort
       output = @@final_list.sort_by{|col| col.name}.uniq
 
       #print out each school name with a reference number in a list
+      puts " "
+      puts "YOUR COLLEGE MATCHES (Sorted Alphabetically) ARE:"
       output.each.with_index(1) do |col , index|
         puts "#{index}. #{col.name}"
       end
