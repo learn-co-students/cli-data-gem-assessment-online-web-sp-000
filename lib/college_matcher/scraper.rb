@@ -64,4 +64,5 @@ class CollegeMatcher::Scraper
     info = CollegeMatcher::Scraper.scrape_college_info
     info[id+7]
   end
+
 end

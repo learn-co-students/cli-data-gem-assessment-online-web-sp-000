@@ -1,6 +1,8 @@
 class CollegeMatcher::CLI
 
   def self.call
+
+    #display initial greeting
     puts "Hello, Welcome to the College Matcher!"
 
     #get user info

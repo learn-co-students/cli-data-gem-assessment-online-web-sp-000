@@ -45,20 +45,4 @@ class CollegeMatcher::User
     @@all << self
   end
 
-  def add_score_to_profile(user_score)
-    self.score = user_score
-  end
-
-  def add_payment_to_profile(user_max_payment)
-    self.max_payment = user_max_payment
-  end
-
-  def add_preference_to_profile(user_priv_or_pub)
-    self.priv_or_pub = user_priv_or_pub
-  end
-
-  def add_pop_to_profile(user_student_pop)
-    self.student_pop = user_student_pop
-  end
-
 end

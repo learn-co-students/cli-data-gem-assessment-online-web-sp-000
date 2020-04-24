@@ -19,7 +19,6 @@ class CollegeMatcher::Compare
   end
 
   def self.compare_price
-    #puts User.max_payment.to_i
     CollegeMatcher::College.all.each do |school|
       if CollegeMatcher::User.max_payment.to_i >= school.tuition_cost.delete("$").delete(',').to_i
         @@final_list << school.name
@@ -28,7 +27,6 @@ class CollegeMatcher::Compare
   end
 
   def self.compare_preference
-          #puts User.priv_or_pub
     CollegeMatcher::College.all.each do |school|
       if CollegeMatcher::User.priv_or_pub == school.public_or_private
         @@final_list << school.name
@@ -37,9 +35,7 @@ class CollegeMatcher::Compare
   end
 
   def self.compare_studentpop
-          #puts User.student_pop.to_i
     CollegeMatcher::College.all.each do |school|
-      #puts school.number_of_students.delete(',').to_i
       if CollegeMatcher::User.student_pop.to_i >= school.number_of_students.delete(',').to_i
         @@final_list << school.name
       end
@@ -55,6 +51,8 @@ class CollegeMatcher::Compare
 
       #remove the duplicates and output list
       output = @@final_list.uniq
+
+      #print out each school name with a reference number in a list
       j = 1
       output.each do |col|
         puts "#{j}. #{col}"
@@ -87,7 +85,6 @@ class CollegeMatcher::Compare
               puts "Please enter a valid school number on the list!"
             end
         else
-          #puts "Good luck with your applications #{CollegeMatcher::User.name}!"
           break
         end
     end
