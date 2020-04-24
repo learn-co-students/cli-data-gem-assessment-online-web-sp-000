@@ -60,7 +60,6 @@ class CollegeMatcher::CLI
 
         #clear @@all in College Class
         CollegeMatcher::College.all.clear()
-        CollegeMatcher::College.all
 
         #run application again
         system("ruby bin/college_matcher")
