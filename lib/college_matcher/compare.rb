@@ -3,7 +3,6 @@ class CollegeMatcher::Compare
 
   def self.compareAll
     CollegeMatcher::College.all.each do |school|
-      #if (CollegeMatcher::User.score.to_i >= school.average_act.to_i) && (CollegeMatcher::User.max_payment.to_i >= school.tuition_cost.delete("$").delete(',').to_i) && (CollegeMatcher::User.priv_or_pub == school.public_or_private) && (CollegeMatcher::User.student_pop.to_i >= school.number_of_students.to_i)
       if (CollegeMatcher::User.max_payment.to_i >= school.tuition_cost.delete("$").delete(',').to_i) && (CollegeMatcher::User.priv_or_pub == school.public_or_private) && (CollegeMatcher::User.student_pop.to_i >= school.number_of_students.to_i)
         @@final_list << school.name
         puts @@final_list
@@ -12,8 +11,6 @@ class CollegeMatcher::Compare
   end
 
   def self.compare_act
-    #puts User.name.score.to_i
-    #puts User.score.to_i
     CollegeMatcher::College.all.each do |school|
       if CollegeMatcher::User.score.to_i >= school.average_act.to_i
         @@final_list << school.name
@@ -71,7 +68,7 @@ class CollegeMatcher::Compare
       dd_response = gets.chomp.strip.downcase
         if dd_response == 'y'
           puts "Enter the number of the match you want to learn more about:"
-          number_response = gets.chomp.to_i
+          number_response = gets.chomp.strip.to_i
             if number_response >= 1 && number_response <= output.length
                 CollegeMatcher::College.all.each do |college_name|
                   if college_name.name == output[number_response - 1]

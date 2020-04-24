@@ -1,21 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 
-
 class CollegeMatcher::Scraper
-
-=begin
-  if User.all.empty? == true
-    url_act = 36
-  elsif User.all.empty? == false
-     url_act = User.all.last.score
-  end
-
-  index_url = "https://www.cappex.com/colleges-by-act/colleges-for-a-#{url_act}-act"
-  @scraped_colleges = []
-  @scraped_colleges = Nokogiri::HTML(open(index_url))
-=end
-
 
   def self.scrape_colleges
     index_url = "https://www.cappex.com/colleges-by-act/colleges-for-a-#{CollegeMatcher::User.all.last.score}-act"
@@ -42,7 +28,6 @@ class CollegeMatcher::Scraper
   def self.scrape_Act(name,id)
     info = CollegeMatcher::Scraper.scrape_college_info
     info[id]
-    #@data_array[id]
   end
 
   def self.scrape_Sat(name,id)

@@ -40,7 +40,7 @@ class CollegeMatcher::CLI
             priv_or_pub = gets.chomp.strip.downcase.to_i
               if priv_or_pub > 0 && priv_or_pub < 3
                 puts "5) What is the maximum amount of students you prefer? [Enter a Number between 0 & 70000]"
-                student_pop = gets.chomp.strip.downcase.delete(',').to_i
+                student_pop = gets.chomp.delete(',').strip.downcase.to_i
                   if student_pop > 0 && student_pop < 70000
                     new_user = CollegeMatcher::User.new(user_name,score,max_payment,priv_or_pub,student_pop)
                     break
