@@ -53,11 +53,15 @@ class CollegeMatcher::CLI
     end
   end
 
-
   def self.final_greeting
     puts "Try Again? [Enter Y or N]"
       play_again = gets.chomp.strip.downcase
       if play_again == "y"
+
+        #clear @@all in College Class
+        CollegeMatcher::College.all.clear()
+        CollegeMatcher::College.all
+
         #run application again
         system("ruby bin/college_matcher")
       else

@@ -49,7 +49,7 @@ class CollegeMatcher::College
   end
 
   def self.all
-    @@all
+    @@all.sort_by{|col| col.name}
   end
 
   def save
