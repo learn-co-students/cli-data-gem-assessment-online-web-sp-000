@@ -11,7 +11,7 @@ class CollegeMatcher::Compare
 
   def self.display_matches
     if @@final_list.length == 0
-      puts "YOUR REQUIREMENTS ARE TOO STRICT AND/OR YOU NEED A HIGHER ACT SCORE!"
+      puts "YOUR REQUIREMENTS ARE TOO STRICT!"
     else
       puts " "
       puts "YOUR COLLEGE MATCHES (IN NO PARTICULAR ORDER) ARE:"
@@ -25,7 +25,6 @@ class CollegeMatcher::Compare
         puts "#{j}. #{col}"
         j = j+1
       end
-
 
       dd_response = " "
       while dd_response != "N" && dd_response !="exit"
