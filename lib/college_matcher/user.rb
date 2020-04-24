@@ -9,7 +9,7 @@ class CollegeMatcher::User
 
     if priv_or_pub == 1
       @priv_or_pub = "Public"
-    elsif prive_or_pub == 2
+    elsif priv_or_pub == 2
       @priv_or_pub = "Private"
     end
 

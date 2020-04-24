@@ -34,7 +34,7 @@ class CollegeMatcher::CLI
       user_name = gets.chomp.strip
       puts "2) What is your ACT score? [Enter a Number between 18-36]"
       score = gets.chomp.strip.downcase.to_i
-      if score > 17 && score < 36
+      if score > 17 && score < 37
         puts "3) What is the maximum amount you are willing to pay per year? [Enter a Number between 0 & 100000]"
         max_payment = gets.chomp.delete("$").delete(',').strip.downcase.to_i
           if max_payment > 0 && max_payment < 100000
