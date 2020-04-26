@@ -63,6 +63,7 @@ class CollegeMatcher::CLI
 
         #run application again
         system("ruby bin/college_matcher")
+
       else
         exit
       end
